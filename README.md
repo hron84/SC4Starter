@@ -10,7 +10,7 @@ The program is not need and installation. Just download it from [Downloads secti
 Caveats
 -------
 
-This program is accesses registry and spawns a new process. If you are using an antivirus software with paranoid settings you need to enable this two action for this process.
+This program is accesses registry and spawns a new process. If you are using an antivirus software with paranoid settings you need to give permission to these two actions for this program.
 
 The starter itself will not appear on taskbar just in Process Manager.
 
