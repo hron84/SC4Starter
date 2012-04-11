@@ -16,13 +16,24 @@ Module Executor
         End If
 
         Dim instDir As String = sc4Key.GetValue("Install Dir").ToString
+        Dim resolution As String = sc4Key.GetValue("CustomResolution", "").ToString
         Dim sc4Path As String = instDir + "\Apps\SimCity 4.exe"
         If Not File.Exists(sc4Path) Then
             MsgBox("SimCity is not exists at install path, please run installer again!")
             Return
         End If
 
-        Dim childProc As Process = Process.Start(sc4Path)
+        Dim childProc As Process
+        If resolution <> "" Then
+            Dim args As String = "-CustomResolution:enabled -r" + resolution
+            'If MsgBox("Do you start with args: '" + args + "'?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then End
+
+            childProc = Process.Start(sc4Path, args)
+        Else
+            childProc = Process.Start(sc4Path)
+        End If
+
+
         childProc.ProcessorAffinity = 1
         childProc.WaitForExit()
     End Sub
